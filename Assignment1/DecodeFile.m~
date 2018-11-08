@@ -1,0 +1,18 @@
+function [] = DecodeFile(fileName, key)
+fileId = fopen(fileName);
+formatSpec = '%c';
+content = fscanf(fileId, formatSpec);
+fclose(fileId);
+ for i=1:26
+     ascii = i + double('A') -1;
+     old = key(i)
+     new = char(ascii)
+     
+     content = strrep(content, old, new);
+ end
+
+%  fileId = fopen('result.txt' , 'w');
+%  fprintf(fileId , content);
+%  fclose(fileId);
+
+end
